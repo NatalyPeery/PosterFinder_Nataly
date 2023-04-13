@@ -1,6 +1,8 @@
 FROM python:latest
 
 
+WORKDIR  /usr/src/app/
+
 COPY app.py /usr/src/app/
 COPY connect_to_mongoDB.py /usr/src/app/
 COPY connect_to_TMDB.py /usr/src/app/
