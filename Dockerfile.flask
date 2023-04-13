@@ -1,0 +1,12 @@
+FROM python:latest
+
+COPY app.py /usr/src/app/
+COPY connect_to_mongoDB.py /usr/src/app/
+COPY connect_to_TMDB.py /usr/src/app/
+COPY passwords_and_keys.py /usr/src/app/
+
+RUN pip install flask pymongo requests
+
+EXPOSE 5000
+
+CMD ["python", "/usr/src/app/app.py"]
