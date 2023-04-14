@@ -2,8 +2,8 @@ FROM python:3.8-slim-buster
 
 # Add MongoDB repository
 RUN apt-get update && \
-    apt-get install -y gnupg && \
-    wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | apt-key add - && \
+    apt-get install -y gnupg curl && \
+    curl -fsSL https://www.mongodb.org/static/pgp/server-5.0.asc | apt-key add - && \
     echo "deb http://repo.mongodb.org/apt/amazonlinux/2/mongodb-org/5.0 main" | tee /etc/apt/sources.list.d/mongodb-org-5.0.list && \
     apt-get update
 
@@ -26,6 +26,3 @@ EXPOSE 27017
 
 # Run Python script
 CMD ["python", "./connect_to_mongoDB.py"]
-
-
-
